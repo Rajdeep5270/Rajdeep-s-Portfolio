@@ -107,29 +107,3 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// --- Form Validation ---
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-
-    // Simple Email Regex
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2, 3}$/;
-
-    if (!email.match(emailPattern)) {
-        formStatus.textContent = "Please enter a valid email address.";
-        formStatus.className = "text-center text-red-500 mt-4";
-        formStatus.classList.remove('hidden');
-        return;
-    }
-
-    // Mock success
-    formStatus.textContent = "Message sent successfully!";
-    formStatus.className = "text-center text-green-500 mt-4";
-    formStatus.classList.remove('hidden');
-    contactForm.reset();
-
-    setTimeout(() => formStatus.classList.add('hidden'), 5000);
-});
